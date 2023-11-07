@@ -73,35 +73,79 @@ namespace DoublyLinkedListWithErrors
             DLLNode p = head;
             while (p != null)
             {
+                if (p.num == num)
+                    return p;
+                //if (p.num == num) break;
+                /*-------------------------------------------------
+                 * we dont need to break the code
+                * ----------------------------------------------*/
                 p = p.next;
-                if (p.num == num) break;
             }
-            return (p);
+            return null;//if no node is found we need to write the null
         } // end of search (return pionter to the node);
 
-        public void removeNode(DLLNode p)
-        { // removing the node p.
+        
+         //Code provided by tutor
+         public void removeNode(DLLNode p)
+         { // removing the node p.
 
-            if (p.next == null)
-            {
-                this.tail = this.tail.previous;
-                this.tail.next = null;
-                p.previous = null;
-                return;
-            }
-            if (p.previous == null)
-            {
-                this.head = this.head.next;
-                p.next = null;
-                this.head.previous = null;
-                return;
-            }
-            p.next.previous = p.previous;
-            p.previous.next = p.next;
-            p.next = null;
-            p.previous = null;
-            return;
-        } // end of remove a node
+             if (p.next == null)
+             {
+                 this.tail = this.tail.previous;
+                 this.tail.next = null;
+                 p.previous = null;
+                 return;
+             }
+             if (p.previous == null)
+             {
+                 this.head = this.head.next;
+                 p.next = null;
+                 this.head.previous = null;
+                 return;
+             }
+             p.next.previous = p.previous;
+             p.previous.next = p.next;
+             p.next = null;
+             p.previous = null;
+             return;
+         } // end of remove a node   
+
+        /*
+        //if List have only one node
+        public void removeNode(DLLNode p)
+         {
+             if (p == null) return; // Handle case where p is null
+
+             if (p.next == null)
+             {
+                 if (p == head && p == tail) // List has only one node
+                 {
+                     head = null;
+                     tail = null;
+                 }
+                 else // Removing the tail node
+                 {
+                     this.tail = this.tail.previous;
+                     this.tail.next = null;
+                 }
+
+                 p.previous = null;
+                 return;
+             }
+             if (p.previous == null)
+             {
+                 this.head = this.head.next;
+                 p.next = null;
+                 this.head.previous = null;
+                 return;
+             }
+
+             p.next.previous = p.previous;
+             p.previous.next = p.next;
+             p.next = null;
+             p.previous = null;
+         } */
+
 
         public int total()
         {
@@ -110,7 +154,8 @@ namespace DoublyLinkedListWithErrors
             while (p != null)
             {
                 tot += p.num;
-                p = p.next.next;
+                //p = p.next.next;  this code line going next to next pointer
+                p = p.next;
             }
             return (tot);
         } // end of total

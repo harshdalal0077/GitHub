@@ -20,24 +20,31 @@ namespace DoublyLinkedListWithErrors
 
         public Boolean isPrime(int n)
         {
-            Boolean b = true;
+            // WE DONT THIS boolean variable to check for true and false
+            //Boolean b = true;
 
             if (n < 2)
             {
+                // If n is less than 2, it's not a prime number
                 return (false);
             }
             else
             {
-                for (int i = 2; i < Math.Sqrt(n); i++)
+                // Check for factors from 2 to the square root of n
+                for (int i = 2; i <= Math.Sqrt(n); i++)
                 {
                     if ((n % i) == 0)
                     {
-                        b = false;
-                        break;
+                        //b = false;
+                        //break;
+                        // If n is divisible by i without remainder, it's not a prime number
+                        return false;
                     }
                 }
             }
-            return (b);
+            //return (b);
+            // If none of the factors divided n evenly, it's a prime number
+            return true;
         } // end of isPrime
 
     } // end of class DLLNode
